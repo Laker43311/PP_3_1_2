@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/admin/{id}?id={id}(id=${user.getId()})}" th:object="${user}">
+    <label for="username">Enter username: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
+    <br/>
+    <label for="username">Enter surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+    <br/>
+    <label for="username">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    <br/>
+    <label>Roles: </label>
+    <div>
+        <label for="username" th:text="Admin">User</label>
+        <input type="checkbox" th:field="*{roles}" th:value="1">
+    </div>
+    <div>
+        <label for="username" th:text="User">Admin</label>
+        <input type="checkbox" th:field="*{roles}" th:value="2">
+    </div>
+    <label for="username"></label>
+    <input type="hidden" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+<br/>
+<a href="/logout">Logout</a>
+</body>
+</html>

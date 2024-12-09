@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USER PAGE</title>
+</head>
+<body>
+<form th:method="GET" th:action="@{/user}" th:object="${user}">
+    <table border="1" style="width:50%;margin:auto;">
+        <tr>
+            <td>ID</td>
+            <td>USERNAME</td>
+            <td>SURNAME</td>
+            <td>EMAIL</td>
+            <td>ROLE</td>
+        </tr>
+        <tr>
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getSurname()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+            <td th:text="${#strings.arrayJoin(user.getRoleName(), ', ')}"></td>
+        </tr>
+    </table>
+</form>
+    <a href="/logout">Logout</a>
+</body>
+</html>
